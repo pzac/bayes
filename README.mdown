@@ -1,0 +1,4 @@
+Bayes
+=====
+
+Basic Ruby library for bayesian statistics. Was built from scratch following the examples from http://thinkbayes.com
