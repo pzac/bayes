@@ -14,6 +14,15 @@ module Bayes
       @items[item] ||= probability
     end
 
+    # Gets the probability for an item
+    #
+    #   my_pmf.get(:head)
+    #
+    def get(item)
+      @items[item]
+    end
+    alias_method :probability, :get
+
     # Increases the value of an item. Useful with dictionaries:
     #
     #   my_pmf.increment('word', 1)
@@ -28,15 +37,10 @@ module Bayes
     def normalize!
       total_items = @items.size
       raise "No items set" if total_items == 0
+      total_sum = @items.values.inject(:+).to_f
       @items.each_pair do |k, v|
-        @items[k] = v / total_items
+        @items[k] = v / total_sum
       end
-    end
-
-    # Returns the probability of an item, or `nil` if the item is missing
-    #
-    def probability(item)
-      @items[item]
     end
   end
 end
