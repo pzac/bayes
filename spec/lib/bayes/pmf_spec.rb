@@ -36,8 +36,8 @@ describe Bayes::PMF do
       @pmf.set(:foo, 1)
       @pmf.set(:bar, 4)
       @pmf.normalize!
-      expect(@pmf.get(:foo)).to eq(1/5.0)
-      expect(@pmf.get(:bar)).to eq(4/5.0)
+      expect(@pmf.normalized(:foo)).to eq(1/5.0)
+      expect(@pmf.normalized(:bar)).to eq(4/5.0)
     end
   end
 end
