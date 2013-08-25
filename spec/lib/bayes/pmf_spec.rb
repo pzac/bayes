@@ -31,6 +31,18 @@ describe Bayes::PMF do
     end
   end
 
+  describe '#normalized?' do
+    it "it returns false if an item is assigned a new value" do
+      @pmf.set(:foo, 0.5)
+      expect(@pmf.normalized?).to be_false
+    end
+
+    it "it returns false if an item is incremented a value" do
+      @pmf.increment(:foo, 0.5)
+      expect(@pmf.normalized?).to be_false
+    end
+  end
+
   describe "#normalize!" do
     it "normalizes all probabilities in the [0,1] range" do
       @pmf.set(:foo, 1)

@@ -18,6 +18,7 @@ module Bayes
     #
     def initialize
       @items = {}
+      @normalized = false
     end
 
     # Sets the value for an item
@@ -26,6 +27,7 @@ module Bayes
     #
     def set(item, value)
       @items[item] ||= {:value => value}
+      @normalized = false
       value
     end
 
@@ -58,6 +60,7 @@ module Bayes
     #
     def increment(item, amount = 1)
       @items[item] ||= {:value => 0}
+      @normalized = false
       @items[item][:value] += amount
     end
 
@@ -84,6 +87,11 @@ module Bayes
     def normalized_hash
       normalize! unless @normalized
       hashify(:normalized)
+    end
+
+    # Returns true if the set values have been normalized
+    def normalized?
+      @normalized
     end
 
     private
