@@ -25,8 +25,10 @@ module Bayes
     #
     #   my_pmf.set(:head, 0.5)
     #
+    # Returns the freshly-set value
     def set(item, value)
-      @items[item] ||= {:value => value}
+      @items[item] ||= {:value => nil}
+      @items[item][:value] = value
       @normalized = false
       value
     end
@@ -91,7 +93,7 @@ module Bayes
 
     # Returns true if the set values have been normalized
     def normalized?
-      @normalized
+      !!@normalized
     end
 
     private
