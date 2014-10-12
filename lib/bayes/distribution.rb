@@ -5,11 +5,12 @@ module Bayes
     # are attacked by sharks every year, then what is the chance to have 10
     # people eaten in a year?
     #
-    # Bayes.poisson(10, 4)
-    # # =>
+    # Bayes::Distribution.poisson(10, 4)
+    # # => 0.005292476676420121
     #
     # https://en.wikipedia.org/wiki/Poisson_distribution
     #
+    # Returns the probability in the [0, 1] range
     def self.poisson(k, avg)
       (avg.to_f ** k) / factorial(k) * (Math::E ** -avg)
     end
