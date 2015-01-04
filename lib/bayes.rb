@@ -6,5 +6,3 @@ require_relative 'bayes/table'
 require_relative 'bayes/distribution'
 require_relative 'bayes/arithmetic'
 
-include Bayes::Arithmetic
-
